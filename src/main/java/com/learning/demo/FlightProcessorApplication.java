@@ -14,6 +14,7 @@ public class FlightProcessorApplication {
         String inputFile = "input/input.csv";
         String outputValidFile = "output/output-success.csv";
         String outputFailureFile = "output/output-failure.csv";
+        //to process the input CSV file and generate the output files.
         flightFileRecordProcessor.processCsv(inputFile, outputValidFile, outputFailureFile);
     }
 }

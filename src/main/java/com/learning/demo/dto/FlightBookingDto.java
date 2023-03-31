@@ -6,6 +6,9 @@ import lombok.ToString;
 
 import java.time.LocalDate;
 
+/**
+ * The type Flight booking dto.
+ */
 @Getter
 @Setter
 @ToString(onlyExplicitlyIncluded = true)
@@ -18,11 +21,17 @@ public class FlightBookingDto {
     private char fareClass;
     private LocalDate travelDate;
     private int pax;
-    private LocalDate ticketingDate;
+    private LocalDate
+            ticketingDate;
     private String email;
     private String mobilePhone;
     private String bookedCabin;
 
+    /**
+     * Sets flight booking details.
+     *
+     * @param fields the fields
+     */
     public void setFlightBookingDetails(String[] fields) {
         this.setFirstName(fields[0].trim());
         this.setLastName(fields[1].trim());

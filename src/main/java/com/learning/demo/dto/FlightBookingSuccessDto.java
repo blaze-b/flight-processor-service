@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+/**
+ * The type Flight booking success dto.
+ */
 @Getter
 @Setter
 @NoArgsConstructor
@@ -23,6 +26,11 @@ public class FlightBookingSuccessDto extends FlightBookingDto {
         this.setDiscountCode(DiscountOffer.discountOfferBasedOnFareClass(super.getFareClass()));
     }
 
+    /**
+     * To csv string.
+     *
+     * @return the string
+     */
     public String toCsv() {
         return (String.format("%s,%s,%s,%s,%s,%d,%s,%s,%s,%s,%s", super.getFirstName(), super.getLastName(),
                 super.getPnr(), super.getFareClass(), super.getTravelDate(), super.getPax(),

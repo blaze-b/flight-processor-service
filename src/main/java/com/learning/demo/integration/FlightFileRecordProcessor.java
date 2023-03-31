@@ -19,20 +19,39 @@ import java.util.concurrent.atomic.AtomicReference;
 
 import static com.learning.demo.constants.Common.COMMA;
 
+/**
+ * The type Flight file record processor.
+ */
 public class FlightFileRecordProcessor {
 
     private static final Logger log = LogManager.getLogger();
 
     private IFlightInputRecordValidator flightInputRecordValidator;
 
+    /**
+     * Instantiates a new Flight file record processor.
+     */
     public FlightFileRecordProcessor() {
         this.flightInputRecordValidator = new FlightInputRecordValidator();
     }
 
+    /**
+     * Instantiates a new Flight file record processor.
+     *
+     * @param iFlightInputRecordValidator the flight input record validator
+     */
     public FlightFileRecordProcessor(IFlightInputRecordValidator iFlightInputRecordValidator) {
         this.flightInputRecordValidator = iFlightInputRecordValidator;
     }
 
+    /**
+     * Method provides the main functionality of the program - reading an input CSV file, validating its contents,
+     * and writing the valid and invalid records to separate output CSV files.
+     *
+     * @param inputFile         the input file
+     * @param successOutputFile the success output file
+     * @param failureOutputFile the failure output file
+     */
     public void processCsv(String inputFile, String successOutputFile, String failureOutputFile) {
         log.info("process csv files::entering.......");
         try {

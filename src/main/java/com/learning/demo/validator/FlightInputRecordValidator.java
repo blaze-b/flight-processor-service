@@ -11,6 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * The type Flight input record validator.
+ */
 @Getter
 public class FlightInputRecordValidator implements IFlightInputRecordValidator {
 
@@ -50,6 +53,12 @@ public class FlightInputRecordValidator implements IFlightInputRecordValidator {
         return Objects.nonNull(cabin) && Cabin.containsCabin(cabin);
     }
 
+    /**
+     * Validate csv record boolean.
+     *
+     * @param record the record
+     * @return the boolean
+     */
     public boolean validateCsvRecord(String[] record) {
         boolean isValid = true;
         errorDetails = new ArrayList<>();
