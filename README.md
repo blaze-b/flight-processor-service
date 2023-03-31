@@ -6,4 +6,4 @@
  
 ## High Level Design
 
- ![alt text](https://whimsical.com/flight-processor-detils-BhBCBL129eRk43FvQHytpR)
+ ![alt text](./images/Flight_Processor_Details@2x.png)
