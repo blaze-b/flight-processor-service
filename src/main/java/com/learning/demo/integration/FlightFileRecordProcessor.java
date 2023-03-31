@@ -2,6 +2,7 @@ package com.learning.demo.integration;
 
 import com.learning.demo.dto.FlightBookingErrorDto;
 import com.learning.demo.dto.FlightBookingSuccessDto;
+import com.learning.demo.exception.FlightBookingException;
 import com.learning.demo.validator.FlightInputRecordValidator;
 import com.learning.demo.validator.IFlightInputRecordValidator;
 import org.apache.logging.log4j.LogManager;
@@ -52,10 +53,13 @@ public class FlightFileRecordProcessor {
      * @param successOutputFile the success output file
      * @param failureOutputFile the failure output file
      */
-    public void processCsv(String inputFile, String successOutputFile, String failureOutputFile) {
+    public void processCsv(String inputFile, String successOutputFile, String failureOutputFile)
+            throws FlightBookingException {
         log.info("process csv files::entering.......");
         try {
             List<String> inputRecords = Files.readAllLines(Paths.get(inputFile), StandardCharsets.UTF_8);
+            if (inputRecords.isEmpty())
+                throw new FlightBookingException("No data in the file");
             List<String> outputLines = new ArrayList<>();
             List<String> errorLines = new ArrayList<>();
             AtomicInteger index = new AtomicInteger();
@@ -91,6 +95,7 @@ public class FlightFileRecordProcessor {
             Files.write(Paths.get(failureOutputFile), errorLines, StandardCharsets.UTF_8);
         } catch (IOException e) {
             log.error("process-csv::error-details::{}", e.getLocalizedMessage());
+            throw new FlightBookingException(e.getLocalizedMessage(), e.getCause());
         }
     }
 }

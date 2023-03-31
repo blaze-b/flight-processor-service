@@ -21,8 +21,7 @@ public class FlightBookingDto {
     private char fareClass;
     private LocalDate travelDate;
     private int pax;
-    private LocalDate
-            ticketingDate;
+    private LocalDate ticketingDate;
     private String email;
     private String mobilePhone;
     private String bookedCabin;
