@@ -10,6 +10,8 @@ import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * The type Flight input record validator.
@@ -18,17 +20,22 @@ import java.util.Objects;
 public class FlightInputRecordValidator implements IFlightInputRecordValidator {
 
     private static final Logger log = LogManager.getLogger();
+    private static final String EMAIL_REGEX = "^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$";
+    private static final Pattern EMAIL_PATTERN = Pattern.compile(EMAIL_REGEX);
 
     private List<String> errorDetails;
 
     @Override
     public boolean isValidEmail(String email) {
-        return Objects.nonNull(email) && email.contains("@");
+        if(Objects.isNull(email))
+            return false;
+        Matcher matcher = EMAIL_PATTERN.matcher(email);
+        return matcher.matches();
     }
 
     @Override
     public boolean isValidMobile(String mobileNumber) {
-        return Objects.nonNull(mobileNumber) && mobileNumber.matches("\\d{10}");
+        return Objects.nonNull(mobileNumber) && mobileNumber.matches("^\\d{10}$");
     }
 
     @Override
@@ -37,15 +44,15 @@ public class FlightInputRecordValidator implements IFlightInputRecordValidator {
             LocalDate ticketingDateAfterParsing = LocalDate.parse(ticketingDate);
             LocalDate travelDateAfterParsing = LocalDate.parse(travelDate);
             return ticketingDateAfterParsing.isBefore(travelDateAfterParsing);
-        } catch (DateTimeParseException e) {
-            log.error("isValidTicketingDate::error-details::{}", e.getLocalizedMessage(), e.getCause());
+        } catch (DateTimeParseException | NullPointerException e) {
+            log.error("isValidTicketingDate::error-details::{}", e.getLocalizedMessage());
             return false;
         }
     }
 
     @Override
     public boolean isValidPnr(String pnr) {
-        return Objects.nonNull(pnr) && pnr.matches("[a-zA-Z0-9]{6}");
+        return Objects.nonNull(pnr) && pnr.matches("^[a-zA-Z0-9]{6}$");
     }
 
     @Override

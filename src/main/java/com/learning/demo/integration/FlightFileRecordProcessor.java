@@ -90,7 +90,7 @@ public class FlightFileRecordProcessor {
             Files.write(Paths.get(successOutputFile), outputLines, StandardCharsets.UTF_8);
             Files.write(Paths.get(failureOutputFile), errorLines, StandardCharsets.UTF_8);
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("process-csv::error-details::{}", e.getLocalizedMessage());
         }
     }
 }
