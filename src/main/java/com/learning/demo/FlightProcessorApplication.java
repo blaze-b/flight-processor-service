@@ -1,7 +1,6 @@
 package com.learning.demo;
 
-import com.learning.demo.dto.FlightBookingDto;
-import com.learning.demo.validator.FlightInputValidator;
+import com.learning.demo.integration.FlightFileRecordProcessor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -11,10 +10,10 @@ public class FlightProcessorApplication {
 
     public static void main(String[] args) {
         log.info("flight-service-details-service-hello::entering......");
-        FlightBookingDto flightBookingDto = new FlightBookingDto();
-        flightBookingDto.setFirstName("Brian");
-        flightBookingDto.setLastName("Blaze");
-        flightBookingDto.setEmail("brian.blaze@gmail.com");
-        log.info(flightBookingDto);
+        FlightFileRecordProcessor flightFileRecordProcessor = new FlightFileRecordProcessor();
+        String inputFile = "input/input.csv";
+        String outputValidFile = "output/output-valid.csv";
+        String outputFailureFile = "output/output-failure.csv";
+        flightFileRecordProcessor.processCsv(inputFile, outputValidFile, outputFailureFile);
     }
 }
