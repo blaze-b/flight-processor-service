@@ -53,23 +53,23 @@ public class FlightInputRecordValidator implements IFlightInputRecordValidator {
     public boolean validateCsvRecord(String[] record) {
         boolean isValid = true;
         errorDetails = new ArrayList<>();
-        if (!isValidEmail(record[7])) {
+        if (!isValidEmail(record[7].trim())) {
             errorDetails.add("Email Id Invalid");
             isValid = false;
         }
-        if (!isValidMobile(record[8])) {
+        if (!isValidMobile(record[8].trim())) {
             errorDetails.add("Mobile Number Invalid");
             isValid = false;
         }
-        if (!isValidTicketingDate(record [6], record[4])) {
+        if (!isValidTicketingDate(record[6].trim(), record[4].trim())) {
             errorDetails.add("Ticketing date is before travel date");
             isValid = false;
         }
-        if (!isValidPnr(record[2])) {
+        if (!isValidPnr(record[2].trim())) {
             errorDetails.add("PNR should be 6 characters and also alpha numeric");
             isValid = false;
         }
-        if (!isValidBookedCabin(record [9])) {
+        if (!isValidBookedCabin(record[9].trim())) {
             errorDetails.add("The booked cabin is not valid");
             isValid = false;
         }

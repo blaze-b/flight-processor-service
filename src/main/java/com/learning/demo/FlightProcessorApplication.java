@@ -12,7 +12,7 @@ public class FlightProcessorApplication {
         log.info("flight-service-details-service-hello::entering......");
         FlightFileRecordProcessor flightFileRecordProcessor = new FlightFileRecordProcessor();
         String inputFile = "input/input.csv";
-        String outputValidFile = "output/output-valid.csv";
+        String outputValidFile = "output/output-success.csv";
         String outputFailureFile = "output/output-failure.csv";
         flightFileRecordProcessor.processCsv(inputFile, outputValidFile, outputFailureFile);
     }

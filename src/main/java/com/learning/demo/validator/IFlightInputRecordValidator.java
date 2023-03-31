@@ -1,6 +1,7 @@
 package com.learning.demo.validator;
 
 public interface IFlightInputRecordValidator {
+
     boolean isValidEmail(String email);
 
     boolean isValidMobile(String mobileNumber);
@@ -10,5 +11,6 @@ public interface IFlightInputRecordValidator {
     boolean isValidPnr(String pnr);
 
     boolean isValidBookedCabin(String cabin);
+
 }
 

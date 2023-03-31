@@ -1,7 +1,6 @@
 package com.learning.demo.dto;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -9,7 +8,6 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @ToString(onlyExplicitlyIncluded = true)
 public class FlightBookingDto {
     @ToString.Include
@@ -26,15 +24,15 @@ public class FlightBookingDto {
     private String bookedCabin;
 
     public void setFlightBookingDetails(String[] fields) {
-        this.setFirstName(fields[0]);
-        this.setLastName(fields[1]);
-        this.setPnr(fields[2]);
+        this.setFirstName(fields[0].trim());
+        this.setLastName(fields[1].trim());
+        this.setPnr(fields[2].trim());
         this.setFareClass(fields[3].charAt(0));
-        this.setTravelDate(LocalDate.parse(fields[4]));
-        this.setPax(Integer.parseInt(fields[5]));
-        this.setTicketingDate(LocalDate.parse(fields[6]));
-        this.setEmail(fields[7]);
-        this.setMobilePhone(fields[8]);
-        this.setBookedCabin(fields[9]);
+        this.setTravelDate(LocalDate.parse(fields[4].trim()));
+        this.setPax(Integer.parseInt(fields[5].trim()));
+        this.setTicketingDate(LocalDate.parse(fields[6].trim()));
+        this.setEmail(fields[7].trim());
+        this.setMobilePhone(fields[8].trim());
+        this.setBookedCabin(fields[9].trim());
     }
 }
