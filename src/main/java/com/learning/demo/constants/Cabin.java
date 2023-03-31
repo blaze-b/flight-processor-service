@@ -31,20 +31,7 @@ public enum Cabin {
     ;
 
     private String key;
-
-    /**
-     * Gets cabin.
-     *
-     * @param key the key
-     * @return the cabin
-     */
-    public static String getCabin(String key) {
-        Optional<Cabin> cabinOptional = Arrays.stream(Cabin.values())
-                .filter(cabin -> cabin.getKey().equalsIgnoreCase(key))
-                .findFirst();
-        return cabinOptional.map(Cabin::getKey).orElse("");
-    }
-
+    
     /**
      * Contains cabin boolean.
      *
