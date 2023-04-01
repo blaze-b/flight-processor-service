@@ -4,7 +4,6 @@
  - The program basically segregates the file into two file one is output-success and output-failure so that the required 
  analyst can look into the data and do the necessary correction to the file.
  
- 
 ## Technology used: OpenJdk 11, Maven 3.6.3 
  
 ## High Level Design
