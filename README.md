@@ -4,7 +4,7 @@
  - The program basically segregates the file into two file one is output-success and output-failure so that the required 
  analyst can look into the data and do the necessary correction to the file.
  
-## Technology used: OpenJdk 11, Maven 3.6.3 
+## Technology used: OpenJdk 11, Maven 3.6.3, SOLID Design Principles
  
 ## High Level Design
 
@@ -19,3 +19,15 @@
  - If it's invalid, it creates a FlightBookingErrorDto object with the details and adds it to a list called errorLines. 
  - It then writes these two lists to separate files at the successOutputFile and failureOutputFile paths using UTF-8 encoding. 
  - If the input file is empty, the method throws a FlightBookingException with an error message "No data in the file".
+ 
+
+## Future Scope
+ 
+  - The FlightFileProcessor Class can be extended to for processing other types of files,e.g: .xlx, .parquet, .json.
+  - In the FlightInputRecordValidator class more validations can be provided as it is using Dependency inversion technique.
+  - This is a simple maven project and can be converted to a server based on springboot server so large amount of data can be provided.
+
+
+## Test Coverage attained is 92%
+
+  ![alt text](./images/test-coverage.JPG)
