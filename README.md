@@ -1,6 +1,6 @@
 # Flight Booking Processor Service
 
- - A sample service to do the input output operation for the given PNR flight booking dat
+ - A sample service to do the input output operation for the given PNR flight booking data
  - The program basically segregates the file into two file one is output-success and output-failure so that the required 
  analyst can look into the data and do the necessary correction to the file.
  
@@ -31,3 +31,7 @@
 ## Test Coverage attained is 92%
 
   ![alt text](./images/test-coverage.JPG)
+  
+
+## Improve on the details
+- Details on the test classes

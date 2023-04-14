@@ -6,11 +6,11 @@ import org.junit.Test;
 
 public class FlightBookingSuccessDtoTest {
 
-    private FlightBookingSuccessDto flightBookingSuccessDto;
+    private FlightBookingSuccess flightBookingSuccessDto;
 
     @Before
     public void init() {
-        flightBookingSuccessDto = new FlightBookingSuccessDto();
+        flightBookingSuccessDto = new FlightBookingSuccess();
     }
 
     @Test

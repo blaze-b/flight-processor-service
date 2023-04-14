@@ -12,11 +12,12 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @ToString(onlyExplicitlyIncluded = true)
-public class FlightBookingDto {
+public class FlightBooking {
     @ToString.Include
     private String firstName;
     @ToString.Include
     private String lastName;
+
     private String pnr;
     private char fareClass;
     private LocalDate travelDate;

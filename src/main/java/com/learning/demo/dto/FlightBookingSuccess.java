@@ -15,7 +15,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @EqualsAndHashCode
 @ToString(onlyExplicitlyIncluded = true, callSuper = true)
-public class FlightBookingSuccessDto extends FlightBookingDto {
+public class FlightBookingSuccess extends FlightBooking {
 
     @ToString.Include
     private String discountCode;

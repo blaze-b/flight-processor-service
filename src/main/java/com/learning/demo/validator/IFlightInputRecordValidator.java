@@ -1,5 +1,7 @@
 package com.learning.demo.validator;
 
+import java.time.LocalDate;
+
 /**
  * The interface Flight input record validator.
  */
@@ -29,6 +31,15 @@ public interface IFlightInputRecordValidator {
      * @return the boolean
      */
     boolean isValidTicketingDate(String ticketingDate, String travelDate);
+
+    /**
+     * Is valid ticketing date boolean.
+     *
+     * @param ticketingDate the ticketing date
+     * @param travelDate    the travel date
+     * @return the boolean
+     */
+    boolean isValidTicketingDate(LocalDate ticketingDate, LocalDate travelDate);
 
     /**
      * Is valid pnr boolean.

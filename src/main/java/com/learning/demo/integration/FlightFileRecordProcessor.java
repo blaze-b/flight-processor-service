@@ -1,7 +1,8 @@
 package com.learning.demo.integration;
 
-import com.learning.demo.dto.FlightBookingErrorDto;
-import com.learning.demo.dto.FlightBookingSuccessDto;
+import com.learning.demo.dto.FlightBooking;
+import com.learning.demo.dto.FlightBookingError;
+import com.learning.demo.dto.FlightBookingSuccess;
 import com.learning.demo.exception.FlightBookingException;
 import com.learning.demo.validator.FlightInputRecordValidator;
 import com.learning.demo.validator.IFlightInputRecordValidator;
@@ -74,15 +75,17 @@ public class FlightFileRecordProcessor {
                 } else {
                     FlightInputRecordValidator flightInputRecordValidator = (FlightInputRecordValidator)
                             this.flightInputRecordValidator;
-                    boolean isValid = flightInputRecordValidator.validateCsvRecord(record);
+                    FlightBooking flightBooking = new FlightBooking();
+                    flightBooking.setFlightBookingDetails(record);
+                    boolean isValid = flightInputRecordValidator.validateCsvRecord(flightBooking);
                     if (isValid) {
-                        FlightBookingSuccessDto flightBookingSuccessDto = new FlightBookingSuccessDto();
+                        FlightBookingSuccess flightBookingSuccessDto = new FlightBookingSuccess();
                         flightBookingSuccessDto.setFlightBookingDetails(record);
                         log.info("flight booking success details::{}", flightBookingSuccessDto);
                         outputLines.add(flightBookingSuccessDto.toCsv());
 
                     } else {
-                        FlightBookingErrorDto flightBookingErrorDto = new FlightBookingErrorDto();
+                        FlightBookingError flightBookingErrorDto = new FlightBookingError();
                         flightBookingErrorDto.setFlightBookingDetails(record, flightInputRecordValidator
                                 .getErrorDetails());
                         log.info("flight booking error details::{}", flightBookingErrorDto);

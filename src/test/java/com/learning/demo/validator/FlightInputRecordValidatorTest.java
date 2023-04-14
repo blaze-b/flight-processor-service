@@ -86,7 +86,7 @@ public class FlightInputRecordValidatorTest {
 
     @Test
     public void isValidTicketingDate_NullValueScenarioTest() {
-        boolean isValid = iFlightInputRecordValidator.isValidTicketingDate(null, null);
+        boolean isValid = iFlightInputRecordValidator.isValidTicketingDate((String) null, null);
 
         Assertions.assertThat(isValid).isEqualTo(false);
     }

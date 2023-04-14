@@ -1,6 +1,7 @@
 package com.learning.demo.validator;
 
 import com.learning.demo.constants.Cabin;
+import com.learning.demo.dto.FlightBooking;
 import lombok.Getter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -51,6 +52,11 @@ public class FlightInputRecordValidator implements IFlightInputRecordValidator {
     }
 
     @Override
+    public boolean isValidTicketingDate(LocalDate ticketingDate, LocalDate travelDate) {
+        return ticketingDate.isBefore(travelDate);
+    }
+
+    @Override
     public boolean isValidPnr(String pnr) {
         return Objects.nonNull(pnr) && pnr.matches("^[a-zA-Z0-9]{6}$");
     }
@@ -91,4 +97,31 @@ public class FlightInputRecordValidator implements IFlightInputRecordValidator {
         }
         return isValid;
     }
+
+    public boolean validateCsvRecord(FlightBooking flightBooking) {
+        boolean isValid = true;
+        errorDetails = new ArrayList<>();
+        if (!isValidEmail(flightBooking.getEmail().trim())) {
+            errorDetails.add("Email Id Invalid");
+            isValid = false;
+        }
+        if (!isValidMobile(flightBooking.getMobilePhone().trim())) {
+            errorDetails.add("Mobile Number Invalid");
+            isValid = false;
+        }
+        if (!isValidTicketingDate(flightBooking.getTicketingDate(), flightBooking.getTravelDate())) {
+            errorDetails.add("Ticketing date is before travel date");
+            isValid = false;
+        }
+        if (!isValidPnr(flightBooking.getPnr().trim())) {
+            errorDetails.add("PNR should be 6 characters and also alpha numeric");
+            isValid = false;
+        }
+        if (!isValidBookedCabin(flightBooking.getBookedCabin().trim())) {
+            errorDetails.add("The booked cabin is not valid");
+            isValid = false;
+        }
+        return isValid;
+    }
+
 }

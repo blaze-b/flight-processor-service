@@ -17,7 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 @EqualsAndHashCode
 @ToString(onlyExplicitlyIncluded = true, callSuper = true)
-public class FlightBookingErrorDto extends FlightBookingDto {
+public class FlightBookingError extends FlightBooking {
 
     @ToString.Include
     private String errorDetails;

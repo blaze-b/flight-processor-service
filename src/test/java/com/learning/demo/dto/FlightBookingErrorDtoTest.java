@@ -8,11 +8,11 @@ import java.util.Arrays;
 
 public class FlightBookingErrorDtoTest {
 
-    private FlightBookingErrorDto flightBookingErrorDto;
+    private FlightBookingError flightBookingErrorDto;
 
     @Before
     public void init() {
-        flightBookingErrorDto = new FlightBookingErrorDto();
+        flightBookingErrorDto = new FlightBookingError();
     }
 
     @Test
